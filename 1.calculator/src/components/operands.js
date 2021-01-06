@@ -4,7 +4,11 @@ const OperandButton = (props) => {
   const { name, operandSetting } = props;
   return (
     <div className="calc-button">
-      <button id="operand" onClick={(e) => operandSetting(e)}>
+      <button
+        className="operand"
+        id="operand"
+        onClick={(e) => operandSetting(e)}
+      >
         {name}
       </button>
     </div>

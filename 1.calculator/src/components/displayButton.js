@@ -1,10 +1,10 @@
 import React from "react";
 
 const Button = (props) => {
-  const { numVal, evaluateDisplay } = props;
+  const { numVal, onClickFunction } = props;
   return (
     <div className="calc-button">
-      <button key={numVal} id="numVal" onClick={(e) => evaluateDisplay(e)}>
+      <button key={numVal} id="numVal" onClick={(e) => onClickFunction(e)}>
         {numVal}
       </button>
     </div>

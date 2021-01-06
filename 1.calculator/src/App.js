@@ -12,12 +12,12 @@ const App = () => {
 
   const evaluateDisplay = (e) => {
     const newVal = e.target.innerHTML;
-    if (currentVal == 0 || operand == "=") {
+    if (currentVal === 0 || operand === "=") {
       setCurrentVal(newVal);
       setOperand("");
-    } else if (operand == "") {
+    } else if (operand === "") {
       setCurrentVal(currentVal + newVal);
-    } else if (nextVal == 0) {
+    } else if (nextVal === 0) {
       setNextVal(newVal);
     } else {
       setNextVal(nextVal + newVal);
@@ -27,7 +27,7 @@ const App = () => {
   const operandSetting = (e) => {
     const newOperand = e.target.innerHTML;
     console.log(e);
-    if (operand == "" || operand == "=") {
+    if (operand === "" || operand === "=") {
       setOperand(newOperand);
     } else {
       console.log("Already chosen an operand");
@@ -39,17 +39,17 @@ const App = () => {
     const percent = e.target.innerHTML;
     const one = parseFloat(currentVal);
     const two = parseFloat(nextVal);
-    if (nextVal == 0 && percent !== "%") {
+    if (nextVal === 0 && percent !== "%") {
       return;
-    } else if (operand == "+") {
+    } else if (operand === "+") {
       result = one + two;
-    } else if (operand == "-") {
+    } else if (operand === "-") {
       result = one - two;
-    } else if (operand == "÷") {
+    } else if (operand === "÷") {
       result = one / two;
-    } else if (operand == "x") {
+    } else if (operand === "x") {
       result = one * two;
-    } else if (percent == "%") {
+    } else if (percent === "%") {
       result = one / 100;
     }
     setCurrentVal(result);
@@ -84,21 +84,21 @@ const App = () => {
           <OperandButton name="÷" operandSetting={operandSetting} />
         </div>
         <div className="row">
-          <Button numVal={7} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={8} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={9} evaluateDisplay={evaluateDisplay} />
+          <Button numVal={7} onClickFunction={evaluateDisplay} />
+          <Button numVal={8} onClickFunction={evaluateDisplay} />
+          <Button numVal={9} onClickFunction={evaluateDisplay} />
           <OperandButton name="x" operandSetting={operandSetting} />
         </div>
         <div className="row">
-          <Button numVal={4} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={5} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={6} evaluateDisplay={evaluateDisplay} />
+          <Button numVal={4} onClickFunction={evaluateDisplay} />
+          <Button numVal={5} onClickFunction={evaluateDisplay} />
+          <Button numVal={6} onClickFunction={evaluateDisplay} />
           <OperandButton name="-" operandSetting={operandSetting} />
         </div>
         <div className="row">
-          <Button numVal={1} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={2} evaluateDisplay={evaluateDisplay} />
-          <Button numVal={3} evaluateDisplay={evaluateDisplay} />
+          <Button numVal={1} onClickFunction={evaluateDisplay} />
+          <Button numVal={2} onClickFunction={evaluateDisplay} />
+          <Button numVal={3} onClickFunction={evaluateDisplay} />
           <OperandButton name="+" operandSetting={operandSetting} />
         </div>
         <div className="row">
@@ -107,13 +107,11 @@ const App = () => {
               0
             </button>
           </div>
+          <Button numVal={"."} onClickFunction={evaluateDisplay} />
           <div className="calc-button">
-            <button id="numVal" onClick={evaluateDisplay}>
-              .
+            <button className="operand" onClick={determineResult}>
+              =
             </button>
-          </div>
-          <div className="calc-button">
-            <button onClick={determineResult}>=</button>
           </div>
         </div>
       </div>
