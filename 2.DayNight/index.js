@@ -5,9 +5,9 @@ document.querySelector("input").addEventListener("change", (e) => {
   const { checked } = e.target;
   if (checked) {
     switchBox.classList.add("move");
-    theme.style.backgroundColor = "#0f3460";
+    document.body.classList.add("darktheme");
   } else {
     switchBox.classList.remove("move");
-    theme.style.backgroundColor = "white";
+    document.body.classList.remove("darktheme");
   }
 });
